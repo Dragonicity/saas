@@ -44,3 +44,8 @@ class HomeController < ApplicationController
     end
   end
 end
+
+
+
+rails generate migration add_plan_to_tenants plan:string
+
