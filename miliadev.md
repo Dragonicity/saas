@@ -49,3 +49,24 @@ end
 
 rails generate migration add_plan_to_tenants plan:string
 
+Add plan model:
+
+class Plan
+  PLANS = [:free, :premium]
+
+  def self.options
+    PLANS.map { |plan| [plan.capitalize, plan] }
+  end
+end
+
+Whitelist the plan attribute in the Milia initializer:
+
+config.whitelist_tenant_params = [:plan]
+
+Amend the Tenant model:
+
+validates_uniqueness_of :name
+validates_presence_of :name
+
+tenant = Tenant.new(tenant_params)
+
