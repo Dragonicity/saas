@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Projects</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Details</th>
+      <th>Expected completion date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= link_to project.title, 
+          tenant_project_path(project, tenant_id: @tenant.id), class: "main-link" %></td>
+        <td><%= project.details %></td>
+        <td><%= project.expected_completion_date %></td>
+     
+        <td><%= link_to 'Edit', edit_tenant_project_path(project, tenant_id: @tenant.id), class: "btn btn-primary btn-xs" %></td>
+        <td><%= link_to 'Destroy', tenant_project_path(project, tenant_id: @tenant.id), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Project', new_tenant_project_path(tenant_id: @tenant.id), class: "bt btn-primary" %>
