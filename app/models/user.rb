@@ -9,7 +9,7 @@ class User < ApplicationRecord
 
 
   def is_admin?
-  false
+true
   end
 
 end
