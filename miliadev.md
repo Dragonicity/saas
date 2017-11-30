@@ -70,3 +70,7 @@ validates_presence_of :name
 
 tenant = Tenant.new(tenant_params)
 
+
+Crate confirmations controller:
+
+
