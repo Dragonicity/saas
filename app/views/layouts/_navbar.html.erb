@@ -1,13 +1,13 @@
 <nav class="navbar navbar-toggleable-sm navbar-static-top mb-4">
   <%= link_to ('Project Management App'), root_path, class: "navbar-brand" %>
-  <ul class="navbar-nav ml-2">
+  <ul class="navbar-nav">
     <form class="form-inline">
     <% if current_user && current_user.is_admin?%>
-      <li class="nav-item mr-2">
+      <li class="nav-item mr-2 px-2">
         <%= link_to "Add Members",
           new_member_path, class: 'btn btn-primary nav-link' %>
       </li>
-      <li class="nav-item">
+      <li class="nav-item mr-2 p-2">
         <%= link_to "Change Plan",
           edit_plan_path, class: 'btn btn-primary nav-link' %>
       </li>
@@ -20,7 +20,7 @@
       <li class="nav-item user-name">
       <%= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile' %>
       </li>
-      <li class="logout"><%= link_to('Logout', destroy_user_session_path, class: 'btn btn-xs btn-danger nav-link', title: 'Logout', :method => :delete) %></li>
+      <li class="logout"><%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger nav-link', title: 'Logout', :method => :delete) %></li>
     <% else %>
       <li class="pull-right">
       <%= link_to('Sign In', new_user_session_path, class: 'btn btn-primary nav-link', title: 'Sign In') %>

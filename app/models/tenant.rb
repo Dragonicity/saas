@@ -4,6 +4,11 @@ class Tenant < ApplicationRecord
   has_many :members, dependent: :destroy
   has_many :projects, dependent: :destroy
 
+  def can_create_projects?
+    (plan == 'free' && projects.count < 1) || (plan == 'premium')
+  end
+
+
     def self.create_new_tenant(tenant_params, user_params, coupon_params)
 
       tenant = Tenant.new(:name => tenant_params[:name])
@@ -43,6 +48,5 @@ class Tenant < ApplicationRecord
       Member.create_org_admin(user)
       #
     end
-
    
 end

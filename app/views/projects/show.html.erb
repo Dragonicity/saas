@@ -1,29 +1,30 @@
+<%- model_class = Project -%>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @project.title %>
-</p>
+<h3><%= @project.title %></h3>
+<h3><small>Organisation - <%= tenant_name @project.tenant_id %></small></h3>
 
-<p>
-  <strong>Details:</strong>
-  <%= @project.details %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
+  <dd><%= @project.title %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:details) %>:</strong></dt>
+  <dd><%= @project.details %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:expected_completion_date) %>:</strong></dt>
+  <dd><%= @project.expected_completion_date %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tenant_id) %>:</strong></dt>
+  <dd><%= @project.tenant_id %></dd>
+</dl>
+<h3>Artifacts</h3>
 
-<p>
-  <strong>Expected completion date:</strong>
-  <%= @project.expected_completion_date %>
-</p>
+<br />
+<br />
+<%= link_to '< Back to organisation home', root_path, :class => 'btn btn-default'  %>
+<%= link_to t('Edit', :default => t("helpers.links.edit")),
+              edit_tenant_project_path(project: @project, tenant: @project.tenant_id), :class => 'btn btn-default' %>
 
-<p>
-  <strong>Date:</strong>
-  <%= @project.date %>
-</p>
+<%= link_to t('Edit Project Users'), tenant_project_path(tenant_id: @project.tenant_id, id: @project.id), :class => 'btn btn-default' %>
 
-<p>
-  <strong>Tenant:</strong>
-  <%= @project.tenant_id %>
-</p>
-
-<%= link_to 'Edit', edit_tenant_project_path(@tenant, @project) %> |
-<%= link_to 'Back', tenant_projects_path %>
+<%= link_to t('.delete'),
+              tenant_project_path(@project, @project.tenant_id),
+              :method => 'delete', 
+              :data => { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
