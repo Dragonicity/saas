@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Adtifacts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Key</th>
+      <th>Project</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @adtifacts.each do |adtifact| %>
+      <tr>
+        <td><%= adtifact.name %></td>
+        <td><%= adtifact.key %></td>
+        <td><%= adtifact.project %></td>
+        <td><%= link_to 'Show', adtifact %></td>
+        <td><%= link_to 'Edit', edit_adtifact_path(adtifact) %></td>
+        <td><%= link_to 'Destroy', adtifact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Adtifact', new_adtifact_path %>

@@ -1,0 +1,2 @@
+module AdtifactsHelper
+end
