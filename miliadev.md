@@ -71,6 +71,6 @@ validates_presence_of :name
 tenant = Tenant.new(tenant_params)
 
 
-Crate confirmations controller:
+Create confirmations controller (cloning methods from Milia equivalent:
 
 

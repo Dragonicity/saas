@@ -17,6 +17,7 @@ gem 'devise'
 gem 'milia'
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'jquery-rails'
+gem 'bootstrap-datepicker-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
