@@ -18,7 +18,7 @@
     <form class="form-inline">
     <% if current_user %>
       <li class="nav-item user-name">
-      <%= link_to ('<i class="fa fa-user"></i> ' + truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile' %>
+      <%= link_to (truncate(current_user.email, length: 25)).html_safe, edit_user_registration_path, title: 'Edit Profile' %>
       </li>
       <li class="logout"><%= link_to('Logout', destroy_user_session_path, class: 'btn btn-danger nav-link', title: 'Logout', :method => :delete) %></li>
     <% else %>
